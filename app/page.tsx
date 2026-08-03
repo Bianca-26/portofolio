@@ -8,8 +8,7 @@ export default function Home() {
       
       {/* 1. LINII SEPARATE - FULL WIDTH (FĂRĂ TĂIETURI) */}
       {/* inset-x-0 și w-full forțează containerul pe toată lățimea ecranului */}
-      <div className="absolute top-[32%] md:top-[33%] sm:top-[35%] lg:top-[5%] inset-x-0 w-full h-[180px] sm:h-[220px] lg:h-[280px] pointer-events-none z-30">
-        <Image
+      <div className="absolute top-[32%] sm:top-[35%] md:top-[33%] lg:top-[5%] inset-x-0 w-full h-[180px] sm:h-[220px] lg:h-[280px] pointer-events-none z-30">        <Image
           src="/linii_separate.svg"
           alt=""
           fill
