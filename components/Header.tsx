@@ -42,7 +42,9 @@ export default function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 w-full backdrop-blur-md bg-slate-950/40 border-b border-white/5">
-        <div ref={menuRef} className="w-full max-w-[1300px] mx-auto px-6 sm:px-12 lg:px-16 py-6 flex items-center justify-between relative">        
+        {/* Am redus py-6 la py-3 md:py-6 (pe mobil mai zvelt, pe desktop neschimbat) */}
+        <div ref={menuRef} className="w-full max-w-[1300px] mx-auto px-6 sm:px-12 lg:px-16 py-3 md:py-6 flex items-center justify-between relative">        
+          
           {/* --- DESKTOP LOGO --- */}
           <Link 
             href="https://github.com/Bianca-26" 
@@ -65,16 +67,16 @@ export default function Header() {
           {/* --- MOBILE: BUTON MENU --- */}
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden flex items-center gap-3 px-2 py-1 text-white transition-colors group cursor-pointer"
+            className="md:hidden flex items-center gap-2 text-white transition-colors group cursor-pointer"
           >
             <Image 
               src="/menu.svg"
               alt="Menu"
-              width={40}
-              height={40}
+              width={32}
+              height={32}
               className="block transition-all duration-300 group-hover:scale-110 group-hover:opacity-70"
             />
-            <span className="text-xl font-normal text-white lato transition-all duration-300 group-hover:opacity-70">
+            <span className="text-base font-normal text-white lato transition-all duration-300 group-hover:opacity-70">
               MENU
             </span>
           </button>
@@ -82,9 +84,9 @@ export default function Header() {
           {/* --- MOBILE: MAIL ICON --- */}
           <a 
             href="mailto:biancasandovici17@gmail.com"
-            className="md:hidden w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white"
+            className="md:hidden w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white"
           >
-            <Mail className="w-5 h-5" />
+            <Mail className="w-4 h-4" />
           </a>
 
           {/* --- DESKTOP NAV --- */}
@@ -105,7 +107,7 @@ export default function Header() {
 
           {/* --- MOBILE DROP-DOWN MENU --- */}
           <div 
-            className={`absolute top-full left-0 w-full bg-[#040A14] border-b border-white/10 p-8 flex flex-col gap-6 shadow-2xl transition-all duration-300 ease-in-out md:hidden z-50 ${
+            className={`absolute top-full left-0 w-full bg-[#040A14] border-b border-white/10 p-6 flex flex-col gap-6 shadow-2xl transition-all duration-300 ease-in-out md:hidden z-50 ${
               isOpen 
                 ? 'opacity-100 translate-y-0 pointer-events-auto' 
                 : 'opacity-0 -translate-y-4 pointer-events-none'
@@ -117,22 +119,22 @@ export default function Header() {
               target="_blank" 
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-4 pb-2"
+              className="flex items-center gap-3 pb-2 border-b border-white/5"
             >
               <Image 
                 src="/github.svg"
                 alt="GitHub Profile"
-                width={44}
-                height={44}
+                width={36}
+                height={36}
                 className="block"
               />
-              <span className="text-xl font-semibold text-white lato">
+              <span className="text-lg font-semibold text-white lato">
                 Bianca Sandovici
               </span>
             </Link>
 
             {/* Navigație mobil verticală */}
-            <nav className="flex flex-col gap-5 pt-2 text-lg">
+            <nav className="flex flex-col gap-4 text-base">
               <Link 
                 href="/" 
                 onClick={() => setIsOpen(false)}
