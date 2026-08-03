@@ -6,17 +6,16 @@ export default function Home() {
   return (
     <div className="min-h-screen min-h-[100dvh] bg-[#050B14] text-white relative overflow-hidden flex flex-col justify-between font-sans">
       
-      {/* 1. LINII SEPARATE - CORIGAT SPECIFIC PENTRU MOBIL */}
-      {/* Folosim ordine mobil-first (fără prefix -> sm -> md -> lg) și z-0 ca să stea sub interfață */}
-      <div className="absolute top-[35%] sm:top-[36%] md:top-[35%] lg:top-[5%] inset-x-0 w-full h-[140px] sm:h-[180px] lg:h-[280px] pointer-events-none z-30">
-        <Image
-          src="/linii_separate.svg"
-          alt=""
-          fill
-          priority
-          className="object-contain w-full h-full object-center opacity-80 lg:opacity-100"
-        />
-      </div>
+     {/* 1. LINII SEPARATE - ASCUNSE PE MOBIL, VIZIBILE DE LA MD IN SUS */}
+    <div className="hidden md:block absolute md:top-[33%] lg:top-[5%] inset-x-0 w-full h-[180px] sm:h-[220px] lg:h-[280px] pointer-events-none z-30">
+      <Image
+        src="/linii_separate.svg"
+        alt=""
+        fill
+        priority
+        className="object-contain w-full h-full object-center"
+      />
+    </div>
 
       {/* 2. HEADER-UL */}
       <Header />
