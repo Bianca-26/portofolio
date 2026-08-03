@@ -43,7 +43,7 @@ export default function Header() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 w-full backdrop-blur-md bg-slate-950/40 border-b border-white/5">
         {/* Am redus py-6 la py-3 md:py-6 (pe mobil mai zvelt, pe desktop neschimbat) */}
-        <div ref={menuRef} className="w-full max-w-[1300px] mx-auto px-6 sm:px-12 lg:px-16 py-8 md:py-6 flex items-center justify-between relative">        
+        <div ref={menuRef} className="w-full max-w-[1300px] mx-auto px-6 sm:px-12 lg:px-16 py-7 md:py-6 flex items-center justify-between relative">        
           
           {/* --- DESKTOP LOGO --- */}
           <Link 
