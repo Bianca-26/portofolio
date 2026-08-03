@@ -4,16 +4,17 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#050B14] text-white relative overflow-hidden flex flex-col justify-between font-sans">
+    <div className="min-h-screen min-h-[100dvh] bg-[#050B14] text-white relative overflow-hidden flex flex-col justify-between font-sans">
       
-      {/* 1. LINII SEPARATE - FULL WIDTH (FĂRĂ TĂIETURI) */}
-      {/* inset-x-0 și w-full forțează containerul pe toată lățimea ecranului */}
-      <div className="absolute top-[32%] sm:top-[35%] md:top-[33%] lg:top-[5%] inset-x-0 w-full h-[180px] sm:h-[220px] lg:h-[280px] pointer-events-none z-30">        <Image
+      {/* 1. LINII SEPARATE - CORIGAT SPECIFIC PENTRU MOBIL */}
+      {/* Folosim ordine mobil-first (fără prefix -> sm -> md -> lg) și z-0 ca să stea sub interfață */}
+      <div className="absolute top-[35%] sm:top-[36%] md:top-[35%] lg:top-[5%] inset-x-0 w-full h-[140px] sm:h-[180px] lg:h-[280px] pointer-events-none z-30">
+        <Image
           src="/linii_separate.svg"
           alt=""
           fill
           priority
-          className="object-contain w-full h-full object-center"
+          className="object-contain w-full h-full object-center opacity-80 lg:opacity-100"
         />
       </div>
 
@@ -21,45 +22,41 @@ export default function Home() {
       <Header />
 
       {/* 3. HERO CONTENT */}
-      <main className="w-full max-w-[1300px] mx-auto px-6 sm:px-12 lg:px-16 pt-[130px] lg:pt-[2vh] pb-24 lg:pb-[28vh] grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-0 items-center relative my-auto z-10">
+      <main className="w-full max-w-[1300px] mx-auto px-6 sm:px-12 lg:px-16 pt-[110px] sm:pt-[130px] lg:pt-[2vh] pb-16 sm:pb-24 lg:pb-[28vh] grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-center relative my-auto z-10">
         
         {/* COLOANA STÂNGA */}
-        <div className="lg:col-span-6 flex flex-col gap-6 text-center lg:text-left items-center lg:items-start z-40 lg:mt-35">
-          <h1 className="text-[2.2rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[3.5vw] xl:text-[3.6rem] font-extrabold leading-[1.15] maven-pro lg:whitespace-nowrap">
+        <div className="lg:col-span-6 flex flex-col gap-5 sm:gap-6 text-center lg:text-left items-center lg:items-start z-40 lg:mt-35">
+          <h1 className="text-[2rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[3.5vw] xl:text-[3.6rem] font-extrabold leading-[1.15] maven-pro lg:whitespace-nowrap">
             Simplicity by design. <br className="hidden sm:inline" />
             Functionality by default.
           </h1>
 
           {/* PASTILE */}
           <div className="flex flex-col lg:flex-row items-center lg:justify-start gap-3 lg:gap-7 py-[1vh] w-full">
-            
-            {/* Pastila 1 */}
-            <span className="whitespace-nowrap px-8 lg:px-12 py-3 lg:py-3.5 rounded-full backdrop-blur-md border border-white/30 bg-[#6395C0]/30 text-white text-sm sm:text-base font-normal lato cursor-pointer transition-all duration-300 hover:bg-[#A7D6FF] hover:text-[#0E1B2B] hover:font-semibold hover:border-white">
+            <span className="whitespace-nowrap px-6 sm:px-8 lg:px-12 py-2.5 sm:py-3 lg:py-3.5 rounded-full backdrop-blur-md border border-white/30 bg-[#6395C0]/30 text-white text-xs sm:text-base font-normal lato cursor-pointer transition-all duration-300 hover:bg-[#A7D6FF] hover:text-[#0E1B2B] hover:font-semibold hover:border-white">
               Responsive Designs
             </span>
 
-            {/* Rândul 2 pe mobil */}
             <div className="flex items-center justify-center gap-3 lg:gap-7">
-              <span className="whitespace-nowrap px-8 lg:px-12 py-3 lg:py-3.5 rounded-full backdrop-blur-md border border-white/30 bg-[#6395C0]/30 text-white text-sm sm:text-base font-normal lato cursor-pointer transition-all duration-300 hover:bg-[#A7D6FF] hover:text-[#0E1B2B] hover:font-semibold hover:border-white">
+              <span className="whitespace-nowrap px-6 sm:px-8 lg:px-12 py-2.5 sm:py-3 lg:py-3.5 rounded-full backdrop-blur-md border border-white/30 bg-[#6395C0]/30 text-white text-xs sm:text-base font-normal lato cursor-pointer transition-all duration-300 hover:bg-[#A7D6FF] hover:text-[#0E1B2B] hover:font-semibold hover:border-white">
                 UI/UX Design
               </span>
               
-              <span className="whitespace-nowrap px-8 lg:px-12 py-3 lg:py-3.5 rounded-full backdrop-blur-md border border-white/30 bg-[#6395C0]/30 text-white text-sm sm:text-base font-normal lato cursor-pointer transition-all duration-300 hover:bg-[#A7D6FF] hover:text-[#0E1B2B] hover:font-semibold hover:border-white">
+              <span className="whitespace-nowrap px-6 sm:px-8 lg:px-12 py-2.5 sm:py-3 lg:py-3.5 rounded-full backdrop-blur-md border border-white/30 bg-[#6395C0]/30 text-white text-xs sm:text-base font-normal lato cursor-pointer transition-all duration-300 hover:bg-[#A7D6FF] hover:text-[#0E1B2B] hover:font-semibold hover:border-white">
                 Mobile UI
               </span>
             </div>
-
           </div>
 
-          <p className="text-base sm:text-lg lg:text-[1.2vw] xl:text-[1.2rem] text-gray-300 max-w-[90%] font-normal leading-relaxed lato relative z-20">
+          <p className="text-sm sm:text-lg lg:text-[1.2vw] xl:text-[1.2rem] text-gray-300 max-w-[90%] font-normal leading-relaxed lato relative z-20">
             Hi, I’m a UI/UX Designer passionate about creating intuitive interfaces that people love to use.
           </p>
         </div>
 
-        {/* COLOANA DREAPTA (POZA TA INTACTĂ) */}
+        {/* COLOANA DREAPTA (POZA) */}
         <div className="lg:col-span-6 flex justify-center lg:justify-end items-center relative">
           <div 
-            className="relative aspect-square transition-all w-[90%] sm:w-[75%] lg:w-[85%] lg:min-w-[800px] lg:translate-x-[25%] lg:translate-y-[16%] z-20"
+            className="relative aspect-square transition-all w-[85%] sm:w-[75%] lg:w-[85%] lg:min-w-[800px] lg:translate-x-[25%] lg:translate-y-[16%] z-20"
           >
             <Image
               src="/poza.svg"
