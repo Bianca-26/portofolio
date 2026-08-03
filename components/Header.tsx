@@ -3,11 +3,20 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Mail } from 'lucide-react';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname(); // Detectăm pagina curentă
+
+  // Lista de link-uri pentru a evita duplicarea codului
+  const navLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'Websites', href: '/websites' },
+    { name: 'Apps & Mobile', href: '/mobile' },
+  ];
 
   // 1. Click în afară
   useEffect(() => {
@@ -41,8 +50,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 w-full backdrop-blur-md bg-slate-950/40 border-b border-white/5">
-        {/* Am redus py-6 la py-3 md:py-6 (pe mobil mai zvelt, pe desktop neschimbat) */}
+      <header className="fixed top-0 left-0 right-0 z-50 w-full backdrop-blur-md bg-slate-950/40">
         <div ref={menuRef} className="w-full max-w-[1300px] mx-auto px-6 sm:px-12 lg:px-16 py-7 md:py-6 flex items-center justify-between relative">        
           
           {/* --- DESKTOP LOGO --- */}
@@ -91,18 +99,27 @@ export default function Header() {
 
           {/* --- DESKTOP NAV --- */}
           <nav className="hidden md:flex items-center gap-10 text-lg">
-            <Link href="/" className="relative text-white font-regular group py-1">
-              Home
-              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white transition-all duration-300" />
-            </Link>
-            <Link href="#websites" className="relative text-gray-300 hover:text-white font-regular group py-1 transition-colors">
-              Websites
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300" />
-            </Link>
-            <Link href="#apps" className="relative text-gray-300 hover:text-white font-regular group py-1 transition-colors">
-              Apps & Mobile
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300" />
-            </Link>
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+
+              return (
+                <Link 
+                  key={link.href}
+                  href={link.href} 
+                  className={`relative font-regular group py-1 transition-colors ${
+                    isActive ? 'text-white' : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  {link.name}
+                  {/* Linia se desenează complet dacă link-ul e activ, sau doar la hover dacă nu e activ */}
+                  <span 
+                    className={`absolute left-0 bottom-0 h-[2px] bg-white transition-all duration-300 ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`} 
+                  />
+                </Link>
+              );
+            })}
           </nav>
 
           {/* --- MOBILE DROP-DOWN MENU --- */}
@@ -135,29 +152,23 @@ export default function Header() {
 
             {/* Navigație mobil verticală */}
             <nav className="flex flex-col gap-4 text-base">
-              <Link 
-                href="/" 
-                onClick={() => setIsOpen(false)}
-                className="text-white font-normal hover:text-gray-300 transition-colors lato"
-              >
-                Home
-              </Link>
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
 
-              <Link 
-                href="#websites" 
-                onClick={() => setIsOpen(false)}
-                className="text-white font-normal hover:text-gray-300 transition-colors lato"
-              >
-                Websites
-              </Link>
-
-              <Link 
-                href="#apps" 
-                onClick={() => setIsOpen(false)}
-                className="text-white font-normal hover:text-gray-300 transition-colors lato"
-              >
-                Apps & Mobile
-              </Link>
+                return (
+                  <Link 
+                    key={link.href}
+                    href={link.href} 
+                    onClick={() => setIsOpen(false)}
+                    className={`font-normal transition-colors lato flex items-center justify-between ${
+                      isActive ? 'text-white font-semibold' : 'text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    <span>{link.name}</span>
+                    {isActive && <span className="w-2 h-2 rounded-full bg-white" />}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
 

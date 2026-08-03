@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-[#050B14] text-white relative overflow-hidden flex flex-col justify-between font-sans">
+    <div className="min-h-screen min-h-[100dvh] bg-[#040A14] text-white relative overflow-hidden flex flex-col justify-between font-sans">
       
      {/* 1. LINII SEPARATE - ASCUNSE PE MOBIL, VIZIBILE DE LA MD IN SUS */}
     <div className="hidden md:block absolute md:top-[33%] lg:top-[5%] inset-x-0 w-full h-[180px] sm:h-[220px] lg:h-[280px] pointer-events-none z-30">
