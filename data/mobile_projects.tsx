@@ -6,7 +6,8 @@ export interface MobileProject {
   fullDescription: string;
   desktopCoverImage: string;
   mobileCoverImages: string[];
-  galleryImages?: string[];
+  desktopGalleryImages?: string[];
+  mobileGalleryImages?: string[];
 }
 
 export const mobileProjects: MobileProject[] = [
@@ -21,6 +22,12 @@ export const mobileProjects: MobileProject[] = [
       "/projects/urbanpulse/cover1.svg",
       "/projects/urbanpulse/cover2.svg",
       "/projects/urbanpulse/cover3.svg",
-    ]
+    ],
+    desktopGalleryImages: [
+      "/projects/urbanpulse/1.svg",
+      "/projects/urbanpulse/2.svg",
+    ],
+    mobileGalleryImages: []
+
   }
 ];

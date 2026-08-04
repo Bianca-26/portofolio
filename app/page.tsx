@@ -32,16 +32,16 @@ export default function Home() {
 
           {/* PASTILE */}
           <div className="flex flex-col lg:flex-row items-center lg:justify-start gap-3 lg:gap-7 py-[1vh] w-full">
-            <span className="whitespace-nowrap px-6 sm:px-8 lg:px-12 py-2.5 sm:py-3 lg:py-3.5 rounded-full backdrop-blur-md border border-white/30 bg-[#6395C0]/30 text-white text-xs sm:text-base font-normal lato cursor-pointer transition-all duration-300 hover:bg-[#A7D6FF] hover:text-[#0E1B2B] hover:font-semibold hover:border-white">
+            <span className="whitespace-nowrap px-6 sm:px-8 lg:px-12 py-2.5 sm:py-3 lg:py-3.5 rounded-full backdrop-blur-md border border-white/30 bg-[#6395C0]/30 text-white text-xs sm:text-base font-normal lato pointer-events-none lg:pointer-events-auto transition-all duration-300 lg:hover:bg-[#A7D6FF] lg:hover:text-[#0E1B2B] lg:hover:font-semibold lg:hover:border-white">
               Responsive Designs
             </span>
 
             <div className="flex items-center justify-center gap-3 lg:gap-7">
-              <span className="whitespace-nowrap px-6 sm:px-8 lg:px-12 py-2.5 sm:py-3 lg:py-3.5 rounded-full backdrop-blur-md border border-white/30 bg-[#6395C0]/30 text-white text-xs sm:text-base font-normal lato cursor-pointer transition-all duration-300 hover:bg-[#A7D6FF] hover:text-[#0E1B2B] hover:font-semibold hover:border-white">
+              <span className="whitespace-nowrap px-6 sm:px-8 lg:px-12 py-2.5 sm:py-3 lg:py-3.5 rounded-full backdrop-blur-md border border-white/30 bg-[#6395C0]/30 text-white text-xs sm:text-base font-normal lato pointer-events-none lg:pointer-events-auto transition-all duration-300 lg:hover:bg-[#A7D6FF] lg:hover:text-[#0E1B2B] lg:hover:font-semibold lg:hover:border-white">
                 UI/UX Design
               </span>
               
-              <span className="whitespace-nowrap px-6 sm:px-8 lg:px-12 py-2.5 sm:py-3 lg:py-3.5 rounded-full backdrop-blur-md border border-white/30 bg-[#6395C0]/30 text-white text-xs sm:text-base font-normal lato cursor-pointer transition-all duration-300 hover:bg-[#A7D6FF] hover:text-[#0E1B2B] hover:font-semibold hover:border-white">
+              <span className="whitespace-nowrap px-6 sm:px-8 lg:px-12 py-2.5 sm:py-3 lg:py-3.5 rounded-full backdrop-blur-md border border-white/30 bg-[#6395C0]/30 text-white text-xs sm:text-base font-normal lato pointer-events-none lg:pointer-events-auto transition-all duration-300 lg:hover:bg-[#A7D6FF] lg:hover:text-[#0E1B2B] lg:hover:font-semibold lg:hover:border-white">
                 Mobile UI
               </span>
             </div>

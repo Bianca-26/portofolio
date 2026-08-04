@@ -7,6 +7,8 @@ export interface WebsiteProject {
   desktopCoverImage: string;
   mobileCoverImages: string[];
   galleryImages?: string[];
+  desktopGalleryImages?: string[];
+  mobileGalleryImages?: string[];
 }
 
 export const websiteProjects: WebsiteProject[] = [
