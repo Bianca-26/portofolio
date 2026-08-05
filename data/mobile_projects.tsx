@@ -42,7 +42,7 @@ export const mobileProjects: MobileProject[] = [
       "/projects/urbanpulse/3.svg",
       "/projects/urbanpulse/4.svg",
       "/projects/urbanpulse/5.svg",
-      "/projects/urbanpulse/6.svg",]
+      "/projects/urbanpulse/6.svg"]
 
   }
 ];

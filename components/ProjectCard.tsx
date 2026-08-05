@@ -64,7 +64,7 @@ export default function ProjectCard({ project, onOpenGallery }: ProjectCardProps
 
   return (
     <>
-      <div className="w-full bg-[#172A3A]/40 border border-white/10 rounded-2xl p-5 sm:p-7 text-white backdrop-blur-sm">
+      <div className="w-full bg-[#172A3A]/40 border border-white/5 rounded-2xl p-5 sm:p-7 text-white backdrop-blur-sm">
         
         {/* HEADER CARD: Titlu + Badge */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">

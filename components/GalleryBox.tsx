@@ -31,7 +31,11 @@ export default function ImageLightbox({
   const dragStartRef = useRef({ x: 0, y: 0 });
   const lastWheelTimeRef = useRef(0);
 
-  // 1. DEFINIREA FUNCȚIILOR AJUTĂTOARE (Mai sus în cod)
+  // Ref-uri pentru gestionarea gesture-urilor pe touch (mobil)
+  const initialPinchDistRef = useRef<number | null>(null);
+  const initialScaleRef = useRef<number>(1);
+
+  // 1. FUNCȚII AJUTĂTOARE
   const resetZoom = () => {
     setScale(1);
     setPosition({ x: 0, y: 0 });
@@ -59,7 +63,7 @@ export default function ImageLightbox({
     setIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
-  // 2. USE EFFECT-URILE
+  // 2. USE EFFECT-URI
   useEffect(() => {
     setIndex(currentIndex);
     resetZoom();
@@ -77,7 +81,7 @@ export default function ImageLightbox({
     };
   }, [isOpen]);
 
-  // Zoom pe Touchpad / Mouse & blocare zoom browser
+  // Zoom pe Touchpad / Mouse Wheel & blocare zoom browser
   useEffect(() => {
     const container = containerRef.current;
     if (!container || !isOpen) return;
@@ -104,6 +108,56 @@ export default function ImageLightbox({
     };
   }, [isOpen]);
 
+  // BLOCARE PINCH-ZOOM PE MOBIL & SUPORT PINCH-TO-ZOOM PE IMAGINE
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || !isOpen) return;
+
+    const getDistance = (touches: TouchList) => {
+      return Math.hypot(
+        touches[0].clientX - touches[1].clientX,
+        touches[0].clientY - touches[1].clientY
+      );
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 2) {
+        // Previne zoom-ul paginii de la nivel de browser
+        e.preventDefault();
+        initialPinchDistRef.current = getDistance(e.touches);
+        initialScaleRef.current = scale;
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length === 2 && initialPinchDistRef.current !== null) {
+        e.preventDefault();
+        const currentDist = getDistance(e.touches);
+        const factor = currentDist / initialPinchDistRef.current;
+        const newScale = Math.min(Math.max(initialScaleRef.current * factor, 1), 4);
+        
+        setScale(newScale);
+        if (newScale === 1) setPosition({ x: 0, y: 0 });
+      }
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (e.touches.length < 2) {
+        initialPinchDistRef.current = null;
+      }
+    };
+
+    container.addEventListener('touchstart', handleTouchStart, { passive: false });
+    container.addEventListener('touchmove', handleTouchMove, { passive: false });
+    container.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      container.removeEventListener('touchstart', handleTouchStart);
+      container.removeEventListener('touchmove', handleTouchMove);
+      container.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [isOpen, scale]);
+
   // Control Tastatură
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -119,9 +173,23 @@ export default function ImageLightbox({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, index, scale]);
 
+  useEffect(() => {
+    if (!isOpen || !images || images.length <= 1) return;
+
+    // Calculăm indicii pentru imaginea următoare și cea anterioară
+    const nextIndex = (index + 1) % images.length;
+    const prevIndex = (index - 1 + images.length) % images.length;
+
+    // Le încărcăm silențios în memoria cache a browserului
+    [nextIndex, prevIndex].forEach((i) => {
+      const img = new window.Image();
+      img.src = images[i].src;
+    });
+  }, [index, isOpen, images]);
+
   if (!isOpen || !images || images.length === 0) return null;
 
-  // DRAG & PAN CU LIMITĂ
+  // DRAG & PAN PENTRU MOUSE & TOUCH (UN SINGUR DEGET)
   const handleMouseDown = (e: React.MouseEvent) => {
     if (scale <= 1) return;
     setIsDragging(true);
@@ -150,9 +218,36 @@ export default function ImageLightbox({
     setIsDragging(false);
   };
 
+  // DRAG / PAN PE MOBIL (Un singur deget când este mărită imaginea)
+  const handleTouchStartPan = (e: React.TouchEvent) => {
+    if (scale <= 1 || e.touches.length !== 1) return;
+    setIsDragging(true);
+    const touch = e.touches[0];
+    dragStartRef.current = { x: touch.clientX - position.x, y: touch.clientY - position.y };
+  };
+
+  const handleTouchMovePan = (e: React.TouchEvent) => {
+    if (!isDragging || scale <= 1 || e.touches.length !== 1 || !containerRef.current) return;
+
+    const container = containerRef.current;
+    const { width, height } = container.getBoundingClientRect();
+
+    const maxX = (width * (scale - 1)) / 2;
+    const maxY = (height * (scale - 1)) / 2;
+
+    const touch = e.touches[0];
+    const newX = touch.clientX - dragStartRef.current.x;
+    const newY = touch.clientY - dragStartRef.current.y;
+
+    setPosition({
+      x: Math.max(-maxX, Math.min(maxX, newX)),
+      y: Math.max(-maxY, Math.min(maxY, newY)),
+    });
+  };
+
   return (
     <div 
-      className="fixed inset-0 z-50 flex flex-col items-center justify-between bg-black/95 backdrop-blur-lg p-2 sm:p-4 overflow-hidden select-none"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-between bg-black/95 backdrop-blur-lg p-2 sm:p-4 overflow-hidden select-none touch-none"
       onClick={onClose}
     >
       {/* BARĂ SUS: CONTROALE ZOOM */}
@@ -209,6 +304,9 @@ export default function ImageLightbox({
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStartPan}
+        onTouchMove={handleTouchMovePan}
+        onTouchEnd={handleMouseUp}
       >
         {/* SĂGEATĂ STÂNGA */}
         <button
