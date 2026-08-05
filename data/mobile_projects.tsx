@@ -24,10 +24,25 @@ export const mobileProjects: MobileProject[] = [
       "/projects/urbanpulse/cover3.svg",
     ],
     desktopGalleryImages: [
+      "/projects/urbanpulse/cover_desktop.svg",
       "/projects/urbanpulse/1.svg",
       "/projects/urbanpulse/2.svg",
+      "/projects/urbanpulse/3.svg",
+      "/projects/urbanpulse/4.svg",
+      "/projects/urbanpulse/5.svg",
+      "/projects/urbanpulse/6.svg",
     ],
-    mobileGalleryImages: []
+    mobileGalleryImages: [
+
+      "/projects/urbanpulse/cover1.svg",
+      "/projects/urbanpulse/cover2.svg",
+      "/projects/urbanpulse/cover3.svg",
+      "/projects/urbanpulse/1.svg",
+      "/projects/urbanpulse/2.svg",
+      "/projects/urbanpulse/3.svg",
+      "/projects/urbanpulse/4.svg",
+      "/projects/urbanpulse/5.svg",
+      "/projects/urbanpulse/6.svg",]
 
   }
 ];
