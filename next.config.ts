@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
 
 const nextConfig: NextConfig = {
   images: {
@@ -8,6 +9,10 @@ const nextConfig: NextConfig = {
     // Permite afișarea corectă și rapidă a SVG-urilor
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+  
+  experimental: {
+    scrollRestoration: true,
   },
 
   // Adaugă header-ul HTTP care interzice Google Images să indexeze imaginile
@@ -25,5 +30,7 @@ const nextConfig: NextConfig = {
     ];
   },
 };
+
+
 
 export default nextConfig;

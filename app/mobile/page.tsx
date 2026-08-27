@@ -18,7 +18,11 @@ export default function MobileAppsPage() {
             mobileProjects
               .filter((p) => Boolean(p))
               .map((project) => (
-                <ProjectCard key={project.id} project={project} />
+                <ProjectCard 
+                  key={project.id} 
+                  project={project} 
+                  category="mobile" 
+                />
               ))
           ) : (
             <p className="text-center text-gray-400">Nu există proiecte de afișat.</p>

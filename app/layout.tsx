@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Portofoliul Meu',
-  description: 'Prezentarea proiectelor mele',
+  title: 'Bianca | Portofolio',
+  description: 'My UI/UX Designs over time.',
   robots: {
     index: true,        // Permite Google să indexeze paginile (textul)
     follow: true,       // Permite Google să urmărească link-urile
