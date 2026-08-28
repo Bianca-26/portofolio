@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Target, Users, Lightbulb, Sparkles } from "lucide-react";
 import ScrollToGalleryButton from "@/components/ScrollToGalleryButton";
 import Warning from "@/components/Warning";
+import Image from 'next/image';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -25,24 +26,24 @@ export default async function WebsiteDetailPage({ params }: PageProps) {
 
       <main className="flex-1 max-w-5xl w-full mx-auto px-6 pt-32 md:pt-36 pb-32">
 
-        {/* HERO: Titlu + Badge */}
+{/* HERO: Titlu + Badge */}
         <header className="mb-10 md:mb-12">
-          <div className="flex items-center justify-between gap-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between items-start gap-6">
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
               {project.title}
             </h1>
 
             {project.badge && (
-              <span className="shrink-0 px-6 py-2.5 text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full bg-[#E58C65]/10 text-[#E58C65] border border-[#E58C65]/20">
+              <span className="self-start md:self-auto shrink-0 px-6 py-2.5 text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full bg-[#E58C65]/10 text-[#E58C65] border border-[#E58C65]/20">
                 {project.badge}
               </span>
             )}
           </div>
 
           {/* CARD PENTRU DESCRIERE, TOOLS ȘI BUTON */}
-          <div className="mt-10 md:mt-14 p-6 md:p-8 rounded-2xl bg-[#172A3A]/25 border border-white/5 space-y-6">
-            <p className="text-gray-300 text-lg md:text-xl font-light leading-relaxed max-w-3xl">
-              {project.shortDescription}
+          <div className="mt-6 md:mt-14 p-6 md:p-8 rounded-2xl bg-[#172A3A]/25 border border-white/5 space-y-6">
+            <p className="text-gray-300 text-base md:text-lg w-full max-w-none leading-relaxed">
+              {project.fullDescription}
             </p>
 
             {/* TOOLS USED */}
@@ -68,7 +69,6 @@ export default async function WebsiteDetailPage({ params }: PageProps) {
             </div>
           </div>
         </header>
-        <Warning /> 
 
         {/* ========================================================= */}
         {/* COVER SECTION RESPONSIVE (DESKTOP & MOBILE)               */}
@@ -77,9 +77,13 @@ export default async function WebsiteDetailPage({ params }: PageProps) {
         {/* 1. Desktop Cover (vizibil doar pe ecrane >= md) */}
         {project.desktopCoverImage && (
           <div className="hidden md:block w-full rounded-2xl overflow-hidden border border-white/10 bg-[#050B14] shadow-2xl mb-20 md:mb-24">
-            <img
+            <Image
               src={project.desktopCoverImage}
               alt={`${project.title} Desktop Cover`}
+              width={0}
+              height={0}
+              sizes="100vw"
+              priority={true}
               className="w-full h-auto object-cover"
             />
           </div>
@@ -94,11 +98,15 @@ export default async function WebsiteDetailPage({ params }: PageProps) {
                   key={index}
                   className="w-full rounded-2xl overflow-hidden border border-white/10 bg-[#050B14] shadow-xl"
                 >
-                  <img
-                    src={src}
-                    alt={`${project.title} Mobile Cover ${index + 1}`}
+                  <Image
+                    src={project.desktopCoverImage}
+                    alt={`${project.title} Desktop Cover`}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    priority={true}
                     className="w-full h-auto object-cover"
-                  />
+            />
                 </div>
               ))}
             </div>
@@ -117,27 +125,49 @@ export default async function WebsiteDetailPage({ params }: PageProps) {
               </h2>
 
               <div className="space-y-6 pl-3 md:pl-6 border-l-2 border-white/10">
-                {project.challenge.context && (
-                  <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-[#82C3F5] mb-2">
-                      Context
-                    </h3>
-                    <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-                      {project.challenge.context}
-                    </p>
+                {/* CONTEXT */}
+              {project.challenge.context && (
+                <div>
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-[#82C3F5] mb-2">
+                    Context
+                  </h3>
+                  <div className="space-y-3">
+                    {Array.isArray(project.challenge.context) ? (
+                      project.challenge.context.map((p, idx) => (
+                        <p key={idx} className="text-gray-300 text-base md:text-lg leading-relaxed">
+                          {p}
+                        </p>
+                      ))
+                    ) : (
+                      <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                        {project.challenge.context}
+                      </p>
+                    )}
                   </div>
-                )}
+                </div>
+              )}
 
-                {project.challenge.objective && (
-                  <div className="pt-2">
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-[#82C3F5] mb-2">
-                      Objective
-                    </h3>
-                    <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-                      {project.challenge.objective}
-                    </p>
+              {/* OBJECTIVE */}
+              {project.challenge.objective && (
+                <div className="pt-2">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-[#82C3F5] mb-2">
+                    Objective
+                  </h3>
+                  <div className="space-y-3">
+                    {Array.isArray(project.challenge.objective) ? (
+                      project.challenge.objective.map((p, idx) => (
+                        <p key={idx} className="text-gray-300 text-base md:text-lg leading-relaxed">
+                          {p}
+                        </p>
+                      ))
+                    ) : (
+                      <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                        {project.challenge.objective}
+                      </p>
+                    )}
                   </div>
-                )}
+                </div>
+              )}
               </div>
             </section>
           )}
@@ -162,10 +192,18 @@ export default async function WebsiteDetailPage({ params }: PageProps) {
               <h2 className="text-2xl md:text-3xl font-bold text-white flex items-center gap-3">
                 3. The Solution
               </h2>
-              <div className="pl-3 md:pl-6 border-l-2 border-white/10">
-                <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-                  {project.solution}
-                </p>
+              <div className="pl-3 md:pl-6 border-l-2 border-white/10 space-y-4">
+                {Array.isArray(project.solution) ? (
+                  project.solution.map((paragraph, index) => (
+                    <p key={index} className="text-gray-300 text-base md:text-lg leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))
+                ) : (
+                  <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                    {project.solution}
+                  </p>
+                )}
               </div>
             </section>
           )}
@@ -176,10 +214,18 @@ export default async function WebsiteDetailPage({ params }: PageProps) {
               <h2 className="text-2xl md:text-3xl font-bold text-white flex items-center gap-3">
                 4. Additional Notes
               </h2>
-              <div className="pl-3 md:pl-6 border-l-2 border-[#E58C65]/30">
-                <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-                  {project.additionalNotes}
-                </p>
+              <div className="pl-3 md:pl-6 border-l-2 border-[#E58C65]/30 space-y-4">
+                {Array.isArray(project.additionalNotes) ? (
+                  project.additionalNotes.map((note, index) => (
+                    <p key={index} className="text-gray-300 text-base md:text-lg leading-relaxed">
+                      {note}
+                    </p>
+                  ))
+                ) : (
+                  <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                    {project.additionalNotes}
+                  </p>
+                )}
               </div>
             </section>
           )}
@@ -198,9 +244,12 @@ export default async function WebsiteDetailPage({ params }: PageProps) {
                   key={index}
                   className="w-full rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 bg-[#050B14] shadow-2xl"
                 >
-                  <img
+                  <Image
                     src={src}
                     alt={`${project.title} Desktop screen ${index + 1}`}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
                     className="w-full h-auto object-cover"
                   />
                 </div>
@@ -217,10 +266,13 @@ export default async function WebsiteDetailPage({ params }: PageProps) {
                     key={index}
                     className="w-full rounded-2xl overflow-hidden border border-white/10 bg-[#050B14] shadow-2xl"
                   >
-                    <img
+                    <Image
                       src={src}
-                      alt={`${project.title} Mobile screen ${index + 1}`}
-                      className="w-full h-auto object-cover"
+                    alt={`${project.title} Desktop screen ${index + 1}`}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="w-full h-auto object-cover"
                     />
                   </div>
                 ))}
