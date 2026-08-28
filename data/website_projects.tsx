@@ -40,16 +40,16 @@ export const websiteProjects: WebsiteProject[] = [
       ["Built a clean, mountain-themed landing page that shows how the app works using phone mockups and simple illustrations. The page clearly walks users through the main features—like planning group hikes, live GPS tracking, and earning badges. Simple email signup boxes at the top and bottom make it easy for people to join the waitlist."],
     additionalNotes:
       ["You can check out the live website at prinmunti.ro. Keep in mind that some sections or details might look a bit different in production as the project continues to evolve."],
-    desktopCoverImage: "/projects/landingpageprinmunti/desktop_cover.svg",
+    desktopCoverImage: "/projects/landingpageprinmunti/desktop_cover_compressed.webp",
     mobileCoverImages: [
-      "/projects/landingpageprinmunti/desktop_cover.svg"
+      "/projects/landingpageprinmunti/desktop_cover_compressed.webp"
     ],
     desktopGalleryImages: [
-      "/projects/landingpageprinmunti/desktop_1.svg"
+      "/projects/landingpageprinmunti/desktop_1_compressed.webp"
     ],
     mobileGalleryImages: [
-      "/projects/landingpageprinmunti/mobile_1_prinmunti.svg",
-      "/projects/landingpageprinmunti/mobile_2_prinmunti.svg",
+      "/projects/landingpageprinmunti/mobile_1_compressed.webp",
+      "/projects/landingpageprinmunti/mobile_2_prinmunti_compressed.webp",
     ],
   },
 ];

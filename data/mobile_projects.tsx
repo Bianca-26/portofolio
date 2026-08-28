@@ -43,27 +43,27 @@ export const mobileProjects: MobileProject[] = [
   "Awarded 3rd Place in the Web & Mobile track at FIICode 2026 with our 3-person team.",
   "As the sole UI/UX designer, I focused on making the interface clear and easy to navigate during emergencies, designing fast incident reporting flows and a consistent dark-mode experience across devices."
 ],
-    desktopCoverImage: "/projects/urbanpulse/cover_urbanpulse.svg",
+    desktopCoverImage: "/projects/urbanpulse/cover_urbanpulse_compressed.webp",
     mobileCoverImages: [
-      "/projects/urbanpulse/cover_urbanpulse.svg"
+      "/projects/urbanpulse/cover_urbanpulse_compressed.webp"
     ],
     desktopGalleryImages: [
-      "/projects/urbanpulse/first_urbanpulse.svg",
-      "/projects/urbanpulse/2-1.svg",
-      "/projects/urbanpulse/2.svg",
-      "/projects/urbanpulse/3.svg",
-      "/projects/urbanpulse/4.svg",
-      "/projects/urbanpulse/5.svg",
-      "/projects/urbanpulse/6.svg",
+      "/projects/urbanpulse/first_urbanpulse_compressed.webp",
+      "/projects/urbanpulse/2-1_compressed.webp",
+      "/projects/urbanpulse/2_compressed.webp",
+      "/projects/urbanpulse/3_compressed.webp",
+      "/projects/urbanpulse/4_compressed.webp",
+      "/projects/urbanpulse/5_compressed.webp",
+      "/projects/urbanpulse/6_compressed.webp",
     ],
     mobileGalleryImages: [
-      "/projects/urbanpulse/first_urbanpulse.svg",
-      "/projects/urbanpulse/2-1.svg",
-      "/projects/urbanpulse/2.svg",
-      "/projects/urbanpulse/3.svg",
-      "/projects/urbanpulse/4.svg",
-      "/projects/urbanpulse/5.svg",
-      "/projects/urbanpulse/6.svg",
+      "/projects/urbanpulse/first_urbanpulse_compressed.webp",
+      "/projects/urbanpulse/2-1_compressed.webp",
+      "/projects/urbanpulse/2_compressed.webp",
+      "/projects/urbanpulse/3_compressed.webp",
+      "/projects/urbanpulse/4_compressed.webp",
+      "/projects/urbanpulse/5_compressed.webp",
+      "/projects/urbanpulse/6_compressed.webp",
     ],
   },
 ];
