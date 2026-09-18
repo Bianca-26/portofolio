@@ -38,6 +38,89 @@ export interface WebsiteProject {
 }
 
 export const websiteProjects: WebsiteProject[] = [
+    {
+    id: "website-3",
+    title: "Fluently - Language Tutor Platform",
+    badge: "",
+    shortDescription:
+      "A modern web platform designed for Fluently, a service connecting students with native speakers for 1-on-1 language tutoring.",
+    fullDescription:
+      "A modern web platform designed for Fluently, a service connecting students with native speakers for 1-on-1 language tutoring. The project encompasses the entire user journey, starting from the landing page and detailed tutor profiles—complete with certifications and an intro video—to the fully integrated flow for scheduling preferences and lesson confirmation",
+    tools: ["Figma", "Canva", "Iconify"],
+    challenge: {
+      context: [
+        "1-on-1 language tutoring platforms often suffer from cluttered interfaces, fragmented tutor discovery, and administrative friction. Traditional booking flows feel transactional and overwhelming—leaving students confused about conflicting timezones, session packages, and technical class logistics."
+      ],
+      objective: [
+        "The goal is to increase trial lesson bookings with the 50% off offer, cut tutor search time to under 3 minutes, and prevent timezone booking mistakes with a simple 3-step checkout. At the same time, it lowers beginner anxiety through video-first tutor profiles and gives students direct Google Meet access right after booking."
+      ]
+    },
+    targetAudience: [
+      "The target audience includes busy workers who need quick lessons before or after their jobs, and young students on a budget who want friendly teachers to help them practice speaking without feeling nervous."
+    ],
+    solution: [
+      "A simple web platform that makes booking a lesson fast and stress-free in three clear steps. It includes a detailed filter page to quickly find the right teacher by budget, schedule, and goals. Students can watch short video intros, pick time slots on a calendar that automatically adjusts to their local timezone, and get an instant Google Meet link right after payment.",
+    "To build trust before anyone commits money, tutor profiles feature short introduction videos, clear student reviews, and verified badges. This removes the awkward guesswork for beginners and lets learners quickly get a feel for a teacher's accent, vibe, and teaching style before their first conversation.",
+  "At the final step, the confirmation screen provides a clean lesson card with the direct Google Meet link, local date and time (e.g GMT+3), and quick buttons to message the tutor or go to the dashboard."    ],
+    designSystem: {
+      colors: [
+        {
+          name: "Pure Black",
+          hex: "#EFEEFF",
+          role: "Base Canvas / Background"
+        },
+        {
+          name: "Burnt Terracotta",
+          hex: "#4F46E5",
+          role: "Primary Accent / Main Brand Color"
+        },
+        {
+          name: "Soft Cream",
+          hex: "#1E1F24",
+          role: "Secondary Accent Color"
+        },
+        {
+          name: "Dark Charcoal",
+          hex: "#5A5D66",
+          role: "Elevated Surfaces / Cards"
+        }
+      ],
+      typography: [
+        {
+          name: "Outfit",
+          type: "Logo & Headings",
+          weights: ["Bold", "Semibold"],
+          sampleText: "Speak any language with confidence."
+        },
+        {
+          name: "DM Sans",
+          type: "Body copy & UI elements",
+          weights: ["Regular", "Semibold", "Bold"],
+          sampleText: "Free learning materials & notes."
+        }
+      ],
+      gridImage: "/projects/tutor/grid.png" },
+    desktopCoverImage: "/projects/tutor/cover_compressed.webp",
+    mobileCoverImages: [
+      "/projects/tutor/cover_compressed.webp"
+    ],
+    desktopGalleryImages: [
+      "/projects/tutor/Main-page_compressed.webp",
+      "/projects/tutor/Find-tutors2.webp",
+      "/projects/tutor/Tutor-profile_compressed.webp",
+      "/projects/tutor/Booking - date_compressed.webp",
+      "/projects/tutor/Booking - payement_compressed.webp",
+      "/projects/tutor/Booking - confirmation.png"
+    ],
+    mobileGalleryImages: [
+      "/projects/tutor/Main-page_compressed.webp",
+      "/projects/tutor/Find-tutors2.webp",
+      "/projects/tutor/Tutor-profile_compressed.webp",
+      "/projects/tutor/Booking - date_compressed.webp",
+      "/projects/tutor/Booking - payement_compressed.webp",
+      "/projects/tutor/Booking - confirmation.png"
+    ]
+  },
   {
     id: "website-2",
     title: "Specialty Coffee Landing Page",
