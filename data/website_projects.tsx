@@ -45,7 +45,7 @@ export const websiteProjects: WebsiteProject[] = [
     shortDescription:
       "A modern web platform designed for Fluently, a service connecting students with native speakers for 1-on-1 language tutoring.",
     fullDescription:
-      "A modern web platform designed for Fluently, a service connecting students with native speakers for 1-on-1 language tutoring. The project encompasses the entire user journey, starting from the landing page and detailed tutor profiles—complete with certifications and an intro video—to the fully integrated flow for scheduling preferences and lesson confirmation",
+      "A modern web platform designed for Fluently, a service connecting students with native speakers for 1-on-1 language tutoring. The project encompasses the entire user journey, starting from the landing page and detailed tutor profiles—complete with certifications and an intro video—to the fully integrated flow for scheduling preferences and lesson confirmation.",
     tools: ["Figma", "Canva", "Iconify"],
     challenge: {
       context: [
@@ -77,7 +77,7 @@ export const websiteProjects: WebsiteProject[] = [
         {
           name: "Dark Charcoal",
           hex: "#1E1F24",
-          role: "Text color"
+          role: "Text Color"
         },
         {
           name: "Slate Gray",
