@@ -65,24 +65,24 @@ export const websiteProjects: WebsiteProject[] = [
     designSystem: {
       colors: [
         {
-          name: "Pure Black",
+          name: "Soft Lavender",
           hex: "#EFEEFF",
-          role: "Base Canvas / Background"
+          role: "Light Background /  Surface Accent"
         },
         {
-          name: "Burnt Terracotta",
+          name: "Electric Indigo",
           hex: "#4F46E5",
           role: "Primary Accent / Main Brand Color"
         },
         {
-          name: "Soft Cream",
+          name: "Dark Charcoal",
           hex: "#1E1F24",
-          role: "Secondary Accent Color"
+          role: "Text color"
         },
         {
-          name: "Dark Charcoal",
+          name: "Slate Gray",
           hex: "#5A5D66",
-          role: "Elevated Surfaces / Cards"
+          role: "Paragraphs & tags"
         }
       ],
       typography: [
